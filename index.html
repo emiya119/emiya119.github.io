@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Emiya119 的个人主页 — 全栈开发者 / 设计师，展示项目作品、技术栈与联系方式">
+    <meta name="keywords" content="个人主页,Portfolio,前端,全栈开发,设计,GitHub Pages">
+    <meta name="author" content="emiya119">
+    <meta property="og:title" content="Emiya119 — Portfolio">
+    <meta property="og:description" content="Personal portfolio website built with GitHub Pages">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%A8%3C/text%3E%3C/svg%3E">
+    <title>Emiya119 — Creative Developer</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ink: {
+                            950: '#060608',
+                            900: '#0a0a0f',
+                            800: '#12121a',
+                            700: '#1a1a26',
+                            600: '#262636',
+                        },
+                        accent: {
+                            DEFAULT: '#ff4d4d',
+                            soft: '#ff6b6b',
+                            glow: '#ff2d55',
+                        },
+                        lime: {
+                            DEFAULT: '#c6ff3d',
+                        },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+                        mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out forwards',
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'blink': 'blink 1s step-end infinite',
+                        'marquee': 'marquee 30s linear infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        },
+                        blink: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0' },
+                        },
+                        marquee: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        /* ===== Base ===== */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #060608;
+            color: #e5e5ec;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* ===== Custom Scrollbar ===== */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #0a0a0f; }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #ff4d4d, #ff2d55);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover { background: #ff6b6b; }
+
+        /* ===== Selection ===== */
+        ::selection {
+            background: #ff4d4d;
+            color: #060608;
+        }
+
+        /* ===== Utility ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .noise-bg {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+        }
+
+        .grid-bg {
+            background-image:
+                linear-gradient(rgba(255, 77, 77, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 77, 77, 0.04) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        .glow-accent {
+            box-shadow: 0 0 60px -10px rgba(255, 77, 77, 0.6);
+        }
+
+        /* ===== Cursor Blink ===== */
+        .cursor::after {
+            content: '_';
+            animation: blink 1s step-end infinite;
+            color: #ff4d4d;
+        }
+
+        /* ===== Marquee ===== */
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marquee 30s linear infinite;
+        }
+
+        /* ===== Skill Pill Hover ===== */
+        .skill-pill {
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .skill-pill:hover {
+            transform: translateY(-4px) scale(1.05);
+            border-color: #ff4d4d;
+            box-shadow: 0 8px 30px -5px rgba(255, 77, 77, 0.4);
+        }
+
+        /* ===== Card Tilt ===== */
+        .tilt-card {
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                        box-shadow 0.4s ease;
+            transform-style: preserve-3d;
+        }
+        .tilt-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px -15px rgba(255, 77, 77, 0.3);
+        }
+
+        /* ===== Hero Gradient Text ===== */
+        .gradient-text {
+            background: linear-gradient(135deg, #ffffff 0%, #ff4d4d 50%, #c6ff3d 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ===== Nav Underline ===== */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ff4d4d;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* ===== Magnetic Button ===== */
+        .magnetic {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .magnetic::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: #ff4d4d;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+            z-index: -1;
+        }
+        .magnetic:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* ===== Section Divider ===== */
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #ff4d4d;
+        }
+
+        /* ===== Bento Card ===== */
+        .bento-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.25rem;
+            background: rgba(18, 18, 26, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .bento-card:hover {
+            border-color: rgba(255, 77, 77, 0.3);
+            background: rgba(26, 26, 38, 0.8);
+        }
+        .bento-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 77, 77, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+        .bento-card:hover::before {
+            left: 100%;
+        }
+
+        /* ===== Progress Bar ===== */
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ff4d4d, #ff2d55);
+            border-radius: 999px;
+            transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        /* ===== Noise Overlay ===== */
+        .noise-overlay {
+            pointer-events: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 100;
+            opacity: 0.5;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="noise-bg">
+
+<!-- Noise Overlay -->
+<div class="noise-overlay"></div>
+
+<!-- Progress Bar (scroll) -->
+<div id="scroll-progress" class="fixed top-0 left-0 h-[2px] z-[9999] bg-gradient-to-r from-accent to-accent-glow" style="width:0%"></div>
+
+<!-- ========== NAVIGATION ========== -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-[1000] transition-all duration-500">
+    <div class="max-w-7xl mx-auto px-6 md:px-10">
+        <div class="flex items-center justify-between h-16 md:h-20">
+            <!-- Logo -->
+            <a href="#home" class="flex items-center gap-2 group">
+                <span class="w-8 h-8 rounded-lg bg-accent flex items-center justify-center font-mono font-bold text-ink-950 text-sm group-hover:rotate-12 transition-transform">E</span>
+                <span class="font-mono text-sm text-gray-300 group-hover:text-white transition">emiya119<span class="text-accent">.</span></span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex items-center gap-8 font-mono text-sm">
+                <a href="#home" class="nav-link text-gray-300 hover:text-white">01 / Home</a>
+                <a href="#about" class="nav-link text-gray-300 hover:text-white">02 / About</a>
+                <a href="#work" class="nav-link text-gray-300 hover:text-white">03 / Work</a>
+                <a href="#skills" class="nav-link text-gray-300 hover:text-white">04 / Skills</a>
+                <a href="#contact" class="nav-link text-gray-300 hover:text-white">05 / Contact</a>
+            </div>
+
+            <!-- CTA -->
+            <a href="#contact" class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-ink-950 font-mono text-sm font-semibold rounded-full hover:bg-accent-soft transition-all hover:scale-105">
+                Let's Talk →
+            </a>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-toggle" class="md:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5 rounded-lg bg-ink-800/80 border border-white/10">
+                <span class="w-5 h-0.5 bg-white transition-all" id="line1"></span>
+                <span class="w-5 h-0.5 bg-white transition-all" id="line2"></span>
+                <span class="w-3 h-0.5 bg-white ml-auto transition-all" id="line3"></span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden bg-ink-900/95 backdrop-blur-xl border-t border-white/5">
+        <div class="px-6 py-6 space-y-4 font-mono text-sm">
+            <a href="#home" class="block py-3 text-gray-300 hover:text-accent border-b border-white/5">01 / Home</a>
+            <a href="#about" class="block py-3 text-gray-300 hover:text-accent border-b border-white/5">02 / About</a>
+            <a href="#work" class="block py-3 text-gray-300 hover:text-accent border-b border-white/5">03 / Work</a>
+            <a href="#skills" class="block py-3 text-gray-300 hover:text-accent border-b border-white/5">04 / Skills</a>
+            <a href="#contact" class="block py-3 text-gray-300 hover:text-accent">05 / Contact</a>
+        </div>
+    </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden grid-bg">
+    <!-- Decorative blobs -->
+    <div class="absolute top-1/4 -left-32 w-96 h-96 bg-accent/20 rounded-full blur-[120px] animate-float"></div>
+    <div class="absolute bottom-1/4 -right-32 w-96 h-96 bg-lime/15 rounded-full blur-[120px] animate-float" style="animation-delay: 2s;"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-10 py-32 text-center">
+        <!-- Available badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-ink-800/60 border border-white/10 backdrop-blur-sm mb-8 animate-fade-in">
+            <span class="w-2 h-2 rounded-full bg-lime animate-pulse"></span>
+            <span class="font-mono text-xs text-gray-400">Available for freelance — 2026</span>
+        </div>
+
+        <!-- Name -->
+        <h1 class="font-sans font-black text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-[0.9] tracking-tight mb-6 animate-slide-up" style="animation-delay: 0.1s;">
+            <span class="block text-white">Hello, I'm</span>
+            <span class="block gradient-text mt-2">Emiya119<span class="cursor"></span></span>
+        </h1>
+
+        <!-- Role -->
+        <p class="max-w-2xl mx-auto text-lg md:text-xl text-gray-400 leading-relaxed mb-10 animate-slide-up" style="animation-delay: 0.3s;">
+            Creative Developer & Designer crafting digital experiences that blend
+            <span class="text-white font-medium">code</span>,
+            <span class="text-white font-medium">design</span>, and
+            <span class="text-accent font-medium">motion</span>.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up" style="animation-delay: 0.5s;">
+            <a href="#work" class="group relative px-8 py-4 bg-accent text-ink-950 font-mono font-semibold rounded-full hover:bg-accent-soft transition-all hover:scale-105 glow-accent">
+                View My Work
+                <span class="inline-block ml-2 group-hover:translate-x-1 transition-transform">↓</span>
+            </a>
+            <a href="#contact" class="px-8 py-4 border border-white/20 text-gray-300 font-mono rounded-full hover:border-accent hover:text-white hover:bg-accent/10 transition-all">
+                Get in Touch
+            </a>
+        </div>
+
+        <!-- Scroll hint -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-500 animate-bounce" style="animation-duration: 2s;">
+            <span class="font-mono text-xs tracking-widest">SCROLL</span>
+            <div class="w-[1px] h-12 bg-gradient-to-b from-gray-500 to-transparent"></div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== MARQUEE ========== -->
+<div class="relative py-6 border-y border-white/5 bg-ink-900 overflow-hidden">
+    <div class="marquee-track font-mono text-sm text-gray-500 whitespace-nowrap">
+        <span class="px-8">★ CREATIVE DEVELOPER</span>
+        <span class="px-8 text-accent">●</span>
+        <span class="px-8">UI / UX DESIGNER</span>
+        <span class="px-8 text-accent">●</span>
+        <span class="px-8">OPEN SOURCE CONTRIBUTOR</span>
+        <span class="px-8 text-accent">●</span>
+        <span class="px-8">MOTION ENTHUSIAST</span>
+        <span class="px-8 text-accent">●</span>
+        <!-- Duplicate for seamless loop -->
+        <span class="px-8">★ CREATIVE DEVELOPER</span>
+        <span class="px-8 text-accent">●</span>
+        <span class="px-8">UI / UX DESIGNER</span>
+        <span class="px-8 text-accent">●</span>
+        <span class="px-8">OPEN SOURCE CONTRIBUTOR</span>
+        <span class="px-8 text-accent">●</span>
+        <span class="px-8">MOTION ENTHUSIAST</span>
+        <span class="px-8 text-accent">●</span>
+    </div>
+</div>
+
+<!-- ========== ABOUT ========== -->
+<section id="about" class="relative py-24 md:py-32">
+    <div class="max-w-7xl mx-auto px-6 md:px-10">
+        <div class="grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+            <!-- Left Label -->
+            <div class="lg:col-span-4 reveal">
+                <div class="section-label mb-4">// 02 — About</div>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
+                    Building <span class="text-accent">thoughtful</span> digital things.
+                </h2>
+            </div>
+
+            <!-- Right Content -->
+            <div class="lg:col-span-8 space-y-8">
+                <div class="reveal" style="transition-delay: 0.1s;">
+                    <p class="text-xl md:text-2xl text-gray-300 leading-relaxed">
+                        Hi! I'm a passionate developer who loves the intersection of
+                        <span class="text-white font-medium">engineering</span> and
+                        <span class="text-white font-medium">design</span>. I believe
+                        great products are built when aesthetics meet function.
+                    </p>
+                </div>
+                <div class="reveal" style="transition-delay: 0.2s;">
+                    <p class="text-gray-400 leading-relaxed text-lg">
+                        With a focus on clean code, pixel-perfect interfaces, and
+                        delightful micro-interactions, I create experiences that users
+                        actually <span class="text-accent font-medium">enjoy</span> using.
+                        Whether it's a personal project or a client engagement, I bring
+                        attention to detail and a love for experimentation.
+                    </p>
+                </div>
+
+                <!-- Stats Bento Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6 reveal" style="transition-delay: 0.3s;">
+                    <div class="bento-card p-6">
+                        <div class="text-3xl md:text-4xl font-black text-accent" data-count="5">0+</div>
+                        <div class="font-mono text-xs text-gray-500 mt-2">Years Coding</div>
+                    </div>
+                    <div class="bento-card p-6">
+                        <div class="text-3xl md:text-4xl font-black text-lime" data-count="20">0+</div>
+                        <div class="font-mono text-xs text-gray-500 mt-2">Projects Built</div>
+                    </div>
+                    <div class="bento-card p-6">
+                        <div class="text-3xl md:text-4xl font-black text-white" data-count="48">0</div>
+                        <div class="font-mono text-xs text-gray-500 mt-2">GitHub Stars</div>
+                    </div>
+                    <div class="bento-card p-6">
+                        <div class="text-3xl md:text-4xl font-black text-gray-400">∞</div>
+                        <div class="font-mono text-xs text-gray-500 mt-2">Cups of Coffee</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== WORK / PROJECTS ========== -->
+<section id="work" class="relative py-24 md:py-32 bg-ink-900/50">
+    <div class="max-w-7xl mx-auto px-6 md:px-10">
+        <!-- Section Header -->
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-16 reveal">
+            <div>
+                <div class="section-label mb-4">// 03 — Selected Work</div>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
+                    Recent <span class="text-accent">projects</span>.
+                </h2>
+            </div>
+            <p class="text-gray-500 font-mono text-sm mt-4 md:mt-0">// hover to explore →</p>
+        </div>
+
+        <!-- Project Grid (Bento Style) -->
+        <div class="grid lg:grid-cols-6 gap-6">
+            <!-- Project 1 — Large -->
+            <a href="#" class="bento-card tilt-card lg:col-span-4 reveal group relative aspect-[16/10] bg-gradient-to-br from-ink-700 to-ink-800">
+                <div class="absolute inset-0 p-8 md:p-10 flex flex-col justify-end">
+                    <div class="font-mono text-xs text-accent mb-3">— 01 / WEB APP</div>
+                    <h3 class="text-3xl md:text-4xl font-black mb-3 group-hover:text-accent transition">Project Alpha</h3>
+                    <p class="text-gray-400 mb-4 max-w-md">
+                        A modern productivity dashboard with real-time collaboration,
+                        built with React, TypeScript and WebSocket.
+                    </p>
+                    <div class="flex gap-2 flex-wrap">
+                        <span class="px-3 py-1 bg-ink-600/80 text-xs font-mono rounded-full border border-white/5">React</span>
+                        <span class="px-3 py-1 bg-ink-600/80 text-xs font-mono rounded-full border border-white/5">TypeScript</span>
+                        <span class="px-3 py-1 bg-ink-600/80 text-xs font-mono rounded-full border border-white/5">Tailwind</span>
+                    </div>
+                </div>
+                <div class="absolute top-6 right-6 w-12 h-12 rounded-full bg-accent/20 border border-accent/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                    <span class="text-accent">↗</span>
+                </div>
+                <!-- Placeholder image -->
+                <div class="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-lime/5"></div>
+            </a>
+
+            <!-- Project 2 -->
+            <a href="#" class="bento-card tilt-card lg:col-span-2 reveal group relative aspect-[4/5] bg-gradient-to-br from-ink-700 to-ink-800" style="transition-delay: 0.1s;">
+                <div class="absolute inset-0 p-6 flex flex-col justify-between">
+                    <div class="font-mono text-xs text-accent">— 02 / CLI TOOL</div>
+                    <div>
+                        <h3 class="text-2xl md:text-3xl font-black mb-2 group-hover:text-accent transition">DevKit</h3>
+                        <p class="text-gray-500 text-sm">Developer productivity toolkit for the terminal</p>
+                    </div>
+                </div>
+                <div class="absolute bottom-6 right-6 font-mono text-xs text-gray-600 group-hover:text-accent transition">OPEN ↗</div>
+            </a>
+
+            <!-- Project 3 -->
+            <a href="#" class="bento-card tilt-card lg:col-span-2 reveal group relative aspect-[4/3] bg-gradient-to-br from-ink-700 to-ink-800" style="transition-delay: 0.15s;">
+                <div class="absolute inset-0 p-6 flex flex-col justify-between">
+                    <div class="font-mono text-xs text-accent">— 03 / LIBRARY</div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-black mb-2 group-hover:text-accent transition">MotionFX</h3>
+                        <p class="text-gray-500 text-xs">Lightweight CSS animation library</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Project 4 — Wide -->
+            <a href="#" class="bento-card tilt-card lg:col-span-4 reveal group relative aspect-[16/9] bg-gradient-to-br from-ink-700 to-ink-800" style="transition-delay: 0.2s;">
+                <div class="absolute inset-0 p-8 md:p-10 flex items-center gap-8">
+                    <div class="flex-1">
+                        <div class="font-mono text-xs text-accent mb-3">— 04 / DESIGN SYSTEM</div>
+                        <h3 class="text-2xl md:text-3xl font-black mb-3 group-hover:text-accent transition">Atlas UI Kit</h3>
+                        <p class="text-gray-400 mb-4 text-sm md:text-base">
+                            A comprehensive component library + design tokens, shipped
+                            across multiple product teams.
+                        </p>
+                    </div>
+                    <div class="hidden md:flex items-center gap-2">
+                        <div class="w-16 h-16 rounded-2xl bg-accent/20 border border-accent/30 flex items-center justify-center">
+                            <span class="text-2xl">🎨</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- View All Link -->
+        <div class="text-center mt-16 reveal">
+            <a href="#" class="inline-flex items-center gap-3 font-mono text-sm text-gray-400 hover:text-accent transition group">
+                View all projects on GitHub
+                <span class="w-10 h-[1px] bg-gray-600 group-hover:bg-accent group-hover:w-16 transition-all"></span>
+                <span class="group-hover:translate-x-1 transition-transform">→</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ========== SKILLS ========== -->
+<section id="skills" class="relative py-24 md:py-32">
+    <div class="max-w-7xl mx-auto px-6 md:px-10">
+        <div class="grid lg:grid-cols-12 gap-12 lg:gap-20">
+            <!-- Left -->
+            <div class="lg:col-span-4 reveal">
+                <div class="section-label mb-4">// 04 — Tech Stack</div>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-6">
+                    Tools of the <span class="text-accent">trade</span>.
+                </h2>
+                <p class="text-gray-400">
+                    A curated toolkit refined over years of building and shipping.
+                    Always learning, always experimenting.
+                </p>
+            </div>
+
+            <!-- Right: Skill Groups -->
+            <div class="lg:col-span-8 space-y-10">
+                <!-- Frontend -->
+                <div class="reveal" style="transition-delay: 0.1s;">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="w-8 h-px bg-accent"></span>
+                        <span class="font-mono text-xs uppercase tracking-wider text-gray-500">Frontend</span>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-pill px-5 py-2.5 bg-ink-800/60 border border-white/10 rounded-full font-mono text-sm text-gray-300">HTML5</span>
+                        <span class="skill-pill px-5 py-2.5 bg-ink-800/60 border border-white/10 rounded-full font-mono text-sm text-gray-300">CSS3</span>
+                        <span class="skill-pill px-5 py-2.5 bg-ink-800/60 border border-white/10 rounded-full font-mono text-sm text-gray-300">JavaScript</span>
+                        <span class="skill-pill px-5 py-2.5 bg-ink-800/60 border border-white/10 rounded-full font-mono text-sm text-gray-300">TypeScript</span>
+                        <span class="skill-pill px-5 py-2.5 bg-ink-800/60 border border-white/10 rounded-full font-mono text-sm text-gray-300">React</span>
+                        <span class="skill-pill px-5 py-2.5 bg-ink-800/60 border border-white/10 rounded-full font-mono text-sm text-gray-300">Vue</span>
+                        <span class="skill-pill px-5 py-2.5 bg-ink-800/60 border border-white/10 rounded-full font-mono text-sm text-gray-300">Tailwind CSS</span>
+                        <span class="skill-pill px-5 py-2.5 bg-ink-800/60 border border-white/10 rounded-full font-mono text-sm text-gray-300">Next.js</span>
+                    </div>
+                </div>
+
+                <!-- Backend -->
+                <div class="reveal" style="transition-delay: 0.15s;">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="w-8 h-px bg-lime"></span>
+                        <span class="font-mono text-xs uppercase tracking-wider text-gray-500">Backend</span>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-pill px-5 py-2.5 bg-ink-800/60 border border-white/10 rounded-full font-mono text-sm text-gray-300">Node.js</span>
+                        <span class="skill-pill px-5 py-2.5 bg-ink-800/60 border border-white/10 rounded-full font-mono text-sm text-gray-300">Python</span>
+                        <span class="skill-pill px-5 py-2.5 bg-ink-800/60 border border-white/10 rounded-full font-mono text-sm text-gray-300">Go</span>
+                        <span class="skill-pill px-5 py-2.5 bg-ink-800/60 border border-white/10 rounded-full font-mono text-sm text-gray-300">PostgreSQL</span>
+                        <span class="skill-pill px-5 py-2.5 bg-ink-800/60 border border-white/10 rounded-full font-mono text-sm text-gray-300">Redis</span>
+                        <span class="skill-pill px-5 py-2.5 bg-ink-800/60 border border-white/10 rounded-full font-mono text-sm text-gray-300">REST / GraphQL</span>
+                    </div>
+                </div>
+
+                <!-- Tools & DevOps -->
+                <div class="reveal" style="transition-delay: 0.2s;">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="w-8 h-px bg-white/40"></span>
+                        <span class="font-mono text-xs uppercase tracking-wider text-gray-500">Tools & DevOps</span>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-pill px-5 py-2.5 bg-ink-800/60 border border-white/10 rounded-full font-mono text-sm text-gray-300">Git / GitHub</span>
+                        <span class="skill-pill px-5 py-2.5 bg-ink-800/60 border border-white/10 rounded-full font-mono text-sm text-gray-300">Docker</span>
+                        <span class="skill-pill px-5 py-2.5 bg-ink-800/60 border border-white/10 rounded-full font-mono text-sm text-gray-300">CI/CD</span>
+                        <span class="skill-pill px-5 py-2.5 bg-ink-800/60 border border-white/10 rounded-full font-mono text-sm text-gray-300">Vite / Webpack</span>
+                        <span class="skill-pill px-5 py-2.5 bg-ink-800/60 border border-white/10 rounded-full font-mono text-sm text-gray-300">Figma</span>
+                        <span class="skill-pill px-5 py-2.5 bg-ink-800/60 border border-white/10 rounded-full font-mono text-sm text-gray-300">Linux</span>
+                    </div>
+                </div>
+
+                <!-- Design -->
+                <div class="reveal" style="transition-delay: 0.25s;">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="w-8 h-px bg-white/40"></span>
+                        <span class="font-mono text-xs uppercase tracking-wider text-gray-500">Design & Motion</span>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-pill px-5 py-2.5 bg-ink-800/60 border border-white/10 rounded-full font-mono text-sm text-gray-300">UI Design</span>
+                        <span class="skill-pill px-5 py-2.5 bg-ink-800/60 border border-white/10 rounded-full font-mono text-sm text-gray-300">UX Research</span>
+                        <span class="skill-pill px-5 py-2.5 bg-ink-800/60 border border-white/10 rounded-full font-mono text-sm text-gray-300">Framer Motion</span>
+                        <span class="skill-pill px-5 py-2.5 bg-ink-800/60 border border-white/10 rounded-full font-mono text-sm text-gray-300">GSAP</span>
+                        <span class="skill-pill px-5 py-2.5 bg-ink-800/60 border border-white/10 rounded-full font-mono text-sm text-gray-300">Three.js (learning)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section id="contact" class="relative py-24 md:py-32 bg-ink-900/50">
+    <div class="max-w-7xl mx-auto px-6 md:px-10">
+        <div class="reveal text-center mb-16">
+            <div class="section-label mb-4">// 05 — Contact</div>
+            <h2 class="text-5xl md:text-7xl lg:text-8xl font-black leading-none tracking-tight">
+                Let's make <br>
+                <span class="gradient-text">something great</span>.
+            </h2>
+            <p class="text-gray-500 font-mono text-sm mt-8">// open to freelance · collaboration · full-time</p>
+        </div>
+
+        <!-- Contact Cards Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 reveal" style="transition-delay: 0.1s;">
+            <a href="mailto:hello@example.com" class="bento-card p-6 group">
+                <div class="text-2xl mb-4">✉️</div>
+                <div class="font-mono text-xs text-gray-500 uppercase tracking-wider mb-1">Email</div>
+                <div class="text-white font-medium group-hover:text-accent transition break-all">hello@example.com</div>
+            </a>
+            <a href="https://github.com/emiya119" target="_blank" rel="noopener" class="bento-card p-6 group">
+                <div class="text-2xl mb-4">🐙</div>
+                <div class="font-mono text-xs text-gray-500 uppercase tracking-wider mb-1">GitHub</div>
+                <div class="text-white font-medium group-hover:text-accent transition">@emiya119</div>
+            </a>
+            <a href="#" target="_blank" class="bento-card p-6 group">
+                <div class="text-2xl mb-4">💻</div>
+                <div class="font-mono text-xs text-gray-500 uppercase tracking-wider mb-1">Twitter / X</div>
+                <div class="text-white font-medium group-hover:text-accent transition">@emiya119</div>
+            </a>
+            <a href="#" target="_blank" class="bento-card p-6 group">
+                <div class="text-2xl mb-4">💼</div>
+                <div class="font-mono text-xs text-gray-500 uppercase tracking-wider mb-1">LinkedIn</div>
+                <div class="text-white font-medium group-hover:text-accent transition">in/emiya119</div>
+            </a>
+        </div>
+
+        <!-- Big CTA -->
+        <div class="reveal mt-16 text-center" style="transition-delay: 0.2s;">
+            <a href="mailto:hello@example.com" class="inline-flex items-center gap-4 group">
+                <span class="text-3xl md:text-4xl font-mono text-gray-400 group-hover:text-accent transition">→</span>
+                <span class="text-xl md:text-2xl font-medium text-gray-300 group-hover:text-white transition">Say hello — I reply within 24h</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="relative py-10 border-t border-white/5 bg-ink-950">
+    <div class="max-w-7xl mx-auto px-6 md:px-10">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2 font-mono text-sm text-gray-500">
+                <span class="w-6 h-6 rounded-md bg-accent flex items-center justify-center text-ink-950 font-bold text-xs">E</span>
+                <span>© 2026 emiya119</span>
+            </div>
+            <div class="font-mono text-xs text-gray-600">
+                Built with ❤️ using GitHub Pages · Pure HTML/CSS/JS
+            </div>
+            <a href="#home" class="font-mono text-sm text-gray-500 hover:text-accent transition flex items-center gap-2">
+                Back to top
+                <span class="w-4 h-4 rounded-full border border-current flex items-center justify-center text-[10px]">↑</span>
+            </a>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
