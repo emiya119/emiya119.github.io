@@ -10,7 +10,7 @@
     <meta property="og:description" content="Personal portfolio website built with GitHub Pages">
     <meta property="og:type" content="website">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%A8%3C/text%3E%3C/svg%3E">
-    <title>Emiya119 — Creative Developer</title>
+    <title data-i18n="site_title">Emiya119 — Creative Developer</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -291,17 +291,27 @@
 
             <!-- Desktop Nav -->
             <div class="hidden md:flex items-center gap-8 font-mono text-sm">
-                <a href="#home" class="nav-link text-gray-300 hover:text-white">01 / Home</a>
-                <a href="#about" class="nav-link text-gray-300 hover:text-white">02 / About</a>
-                <a href="#work" class="nav-link text-gray-300 hover:text-white">03 / Work</a>
-                <a href="#skills" class="nav-link text-gray-300 hover:text-white">04 / Skills</a>
-                <a href="#contact" class="nav-link text-gray-300 hover:text-white">05 / Contact</a>
+                <a href="#home" class="nav-link text-gray-300 hover:text-white" data-i18n="nav_home">01 / Home</a>
+                <a href="#about" class="nav-link text-gray-300 hover:text-white" data-i18n="nav_about">02 / About</a>
+                <a href="#work" class="nav-link text-gray-300 hover:text-white" data-i18n="nav_work">03 / Work</a>
+                <a href="#skills" class="nav-link text-gray-300 hover:text-white" data-i18n="nav_skills">04 / Skills</a>
+                <a href="#contact" class="nav-link text-gray-300 hover:text-white" data-i18n="nav_contact">05 / Contact</a>
             </div>
 
-            <!-- CTA -->
-            <a href="#contact" class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-ink-950 font-mono text-sm font-semibold rounded-full hover:bg-accent-soft transition-all hover:scale-105">
-                Let's Talk →
-            </a>
+            <!-- Right Side Actions -->
+            <div class="hidden md:flex items-center gap-3">
+                <!-- Language Toggle -->
+                <button id="lang-toggle"
+                        class="px-3 py-1.5 text-xs font-mono font-semibold rounded-full border border-white/15 text-gray-400 hover:text-white hover:border-accent hover:bg-accent/10 transition-all"
+                        title="Switch to English">
+                    EN
+                </button>
+
+                <!-- CTA -->
+                <a href="#contact" class="inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-ink-950 font-mono text-sm font-semibold rounded-full hover:bg-accent-soft transition-all hover:scale-105" data-i18n="nav_letstalk">
+                    Let's Talk →
+                </a>
+            </div>
 
             <!-- Mobile Menu Toggle -->
             <button id="mobile-toggle" class="md:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5 rounded-lg bg-ink-800/80 border border-white/10">
@@ -315,11 +325,12 @@
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="md:hidden hidden bg-ink-900/95 backdrop-blur-xl border-t border-white/5">
         <div class="px-6 py-6 space-y-4 font-mono text-sm">
-            <a href="#home" class="block py-3 text-gray-300 hover:text-accent border-b border-white/5">01 / Home</a>
-            <a href="#about" class="block py-3 text-gray-300 hover:text-accent border-b border-white/5">02 / About</a>
-            <a href="#work" class="block py-3 text-gray-300 hover:text-accent border-b border-white/5">03 / Work</a>
-            <a href="#skills" class="block py-3 text-gray-300 hover:text-accent border-b border-white/5">04 / Skills</a>
-            <a href="#contact" class="block py-3 text-gray-300 hover:text-accent">05 / Contact</a>
+            <a href="#home" class="block py-3 text-gray-300 hover:text-accent border-b border-white/5" data-i18n="nav_home">01 / Home</a>
+            <a href="#about" class="block py-3 text-gray-300 hover:text-accent border-b border-white/5" data-i18n="nav_about">02 / About</a>
+            <a href="#work" class="block py-3 text-gray-300 hover:text-accent border-b border-white/5" data-i18n="nav_work">03 / Work</a>
+            <a href="#skills" class="block py-3 text-gray-300 hover:text-accent border-b border-white/5" data-i18n="nav_skills">04 / Skills</a>
+            <a href="#contact" class="block py-3 text-gray-300 hover:text-accent" data-i18n="nav_contact">05 / Contact</a>
+            <button id="lang-toggle-mobile" class="mt-2 w-full py-3 text-center text-gray-400 hover:text-accent border-t border-white/5 font-mono text-sm">EN / 中</button>
         </div>
     </div>
 </nav>
@@ -334,17 +345,17 @@
         <!-- Available badge -->
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-ink-800/60 border border-white/10 backdrop-blur-sm mb-8 animate-fade-in">
             <span class="w-2 h-2 rounded-full bg-lime animate-pulse"></span>
-            <span class="font-mono text-xs text-gray-400">Available for freelance — 2026</span>
+            <span class="font-mono text-xs text-gray-400" data-i18n="hero_available">Available for freelance — 2026</span>
         </div>
 
         <!-- Name -->
         <h1 class="font-sans font-black text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-[0.9] tracking-tight mb-6 animate-slide-up" style="animation-delay: 0.1s;">
-            <span class="block text-white">Hello, I'm</span>
+            <span class="block text-white" data-i18n="hero_helloworld">Hello, I'm</span>
             <span class="block gradient-text mt-2">Emiya119<span class="cursor"></span></span>
         </h1>
 
         <!-- Role -->
-        <p class="max-w-2xl mx-auto text-lg md:text-xl text-gray-400 leading-relaxed mb-10 animate-slide-up" style="animation-delay: 0.3s;">
+        <p class="max-w-2xl mx-auto text-lg md:text-xl text-gray-400 leading-relaxed mb-10 animate-slide-up" style="animation-delay: 0.3s;" data-i18n-html="hero_role_full">
             Creative Developer & Designer crafting digital experiences that blend
             <span class="text-white font-medium">code</span>,
             <span class="text-white font-medium">design</span>, and
@@ -353,18 +364,18 @@
 
         <!-- CTA Buttons -->
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up" style="animation-delay: 0.5s;">
-            <a href="#work" class="group relative px-8 py-4 bg-accent text-ink-950 font-mono font-semibold rounded-full hover:bg-accent-soft transition-all hover:scale-105 glow-accent">
+            <a href="#work" class="group relative px-8 py-4 bg-accent text-ink-950 font-mono font-semibold rounded-full hover:bg-accent-soft transition-all hover:scale-105 glow-accent" data-i18n="hero_viewwork">
                 View My Work
                 <span class="inline-block ml-2 group-hover:translate-x-1 transition-transform">↓</span>
             </a>
-            <a href="#contact" class="px-8 py-4 border border-white/20 text-gray-300 font-mono rounded-full hover:border-accent hover:text-white hover:bg-accent/10 transition-all">
+            <a href="#contact" class="px-8 py-4 border border-white/20 text-gray-300 font-mono rounded-full hover:border-accent hover:text-white hover:bg-accent/10 transition-all" data-i18n="hero_getintouch">
                 Get in Touch
             </a>
         </div>
 
         <!-- Scroll hint -->
         <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-500 animate-bounce" style="animation-duration: 2s;">
-            <span class="font-mono text-xs tracking-widest">SCROLL</span>
+            <span class="font-mono text-xs tracking-widest" data-i18n="hero_scroll">SCROLL</span>
             <div class="w-[1px] h-12 bg-gradient-to-b from-gray-500 to-transparent"></div>
         </div>
     </div>
@@ -373,22 +384,22 @@
 <!-- ========== MARQUEE ========== -->
 <div class="relative py-6 border-y border-white/5 bg-ink-900 overflow-hidden">
     <div class="marquee-track font-mono text-sm text-gray-500 whitespace-nowrap">
-        <span class="px-8">★ CREATIVE DEVELOPER</span>
+        <span class="px-8" data-i18n="marquee_cdev">★ CREATIVE DEVELOPER</span>
         <span class="px-8 text-accent">●</span>
-        <span class="px-8">UI / UX DESIGNER</span>
+        <span class="px-8" data-i18n="marquee_uiux">UI / UX DESIGNER</span>
         <span class="px-8 text-accent">●</span>
-        <span class="px-8">OPEN SOURCE CONTRIBUTOR</span>
+        <span class="px-8" data-i18n="marquee_oss">OPEN SOURCE CONTRIBUTOR</span>
         <span class="px-8 text-accent">●</span>
-        <span class="px-8">MOTION ENTHUSIAST</span>
+        <span class="px-8" data-i18n="marquee_motion">MOTION ENTHUSIAST</span>
         <span class="px-8 text-accent">●</span>
         <!-- Duplicate for seamless loop -->
-        <span class="px-8">★ CREATIVE DEVELOPER</span>
+        <span class="px-8" data-i18n="marquee_cdev">★ CREATIVE DEVELOPER</span>
         <span class="px-8 text-accent">●</span>
-        <span class="px-8">UI / UX DESIGNER</span>
+        <span class="px-8" data-i18n="marquee_uiux">UI / UX DESIGNER</span>
         <span class="px-8 text-accent">●</span>
-        <span class="px-8">OPEN SOURCE CONTRIBUTOR</span>
+        <span class="px-8" data-i18n="marquee_oss">OPEN SOURCE CONTRIBUTOR</span>
         <span class="px-8 text-accent">●</span>
-        <span class="px-8">MOTION ENTHUSIAST</span>
+        <span class="px-8" data-i18n="marquee_motion">MOTION ENTHUSIAST</span>
         <span class="px-8 text-accent">●</span>
     </div>
 </div>
@@ -399,8 +410,8 @@
         <div class="grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
             <!-- Left Label -->
             <div class="lg:col-span-4 reveal">
-                <div class="section-label mb-4">// 02 — About</div>
-                <h2 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
+                <div class="section-label mb-4" data-i18n="about_section">// 02 — About</div>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight" data-i18n-html="about_title_complete">
                     Building <span class="text-accent">thoughtful</span> digital things.
                 </h2>
             </div>
@@ -408,7 +419,7 @@
             <!-- Right Content -->
             <div class="lg:col-span-8 space-y-8">
                 <div class="reveal" style="transition-delay: 0.1s;">
-                    <p class="text-xl md:text-2xl text-gray-300 leading-relaxed">
+                    <p class="text-xl md:text-2xl text-gray-300 leading-relaxed" data-i18n-html="about_p1_full">
                         Hi! I'm a passionate developer who loves the intersection of
                         <span class="text-white font-medium">engineering</span> and
                         <span class="text-white font-medium">design</span>. I believe
@@ -416,7 +427,7 @@
                     </p>
                 </div>
                 <div class="reveal" style="transition-delay: 0.2s;">
-                    <p class="text-gray-400 leading-relaxed text-lg">
+                    <p class="text-gray-400 leading-relaxed text-lg" data-i18n-html="about_p2_full">
                         With a focus on clean code, pixel-perfect interfaces, and
                         delightful micro-interactions, I create experiences that users
                         actually <span class="text-accent font-medium">enjoy</span> using.
@@ -429,19 +440,19 @@
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6 reveal" style="transition-delay: 0.3s;">
                     <div class="bento-card p-6">
                         <div class="text-3xl md:text-4xl font-black text-accent" data-count="5">0+</div>
-                        <div class="font-mono text-xs text-gray-500 mt-2">Years Coding</div>
+                        <div class="font-mono text-xs text-gray-500 mt-2" data-i18n="stat_years">Years Coding</div>
                     </div>
                     <div class="bento-card p-6">
                         <div class="text-3xl md:text-4xl font-black text-lime" data-count="20">0+</div>
-                        <div class="font-mono text-xs text-gray-500 mt-2">Projects Built</div>
+                        <div class="font-mono text-xs text-gray-500 mt-2" data-i18n="stat_projects">Projects Built</div>
                     </div>
                     <div class="bento-card p-6">
                         <div class="text-3xl md:text-4xl font-black text-white" data-count="48">0</div>
-                        <div class="font-mono text-xs text-gray-500 mt-2">GitHub Stars</div>
+                        <div class="font-mono text-xs text-gray-500 mt-2" data-i18n="stat_stars">GitHub Stars</div>
                     </div>
                     <div class="bento-card p-6">
                         <div class="text-3xl md:text-4xl font-black text-gray-400">∞</div>
-                        <div class="font-mono text-xs text-gray-500 mt-2">Cups of Coffee</div>
+                        <div class="font-mono text-xs text-gray-500 mt-2" data-i18n="stat_coffee">Cups of Coffee</div>
                     </div>
                 </div>
             </div>
@@ -455,12 +466,12 @@
         <!-- Section Header -->
         <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-16 reveal">
             <div>
-                <div class="section-label mb-4">// 03 — Selected Work</div>
-                <h2 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
+                <div class="section-label mb-4" data-i18n="work_section">// 03 — Selected Work</div>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight" data-i18n-html="work_title_complete">
                     Recent <span class="text-accent">projects</span>.
                 </h2>
             </div>
-            <p class="text-gray-500 font-mono text-sm mt-4 md:mt-0">// hover to explore →</p>
+            <p class="text-gray-500 font-mono text-sm mt-4 md:mt-0" data-i18n="work_hover">// hover to explore →</p>
         </div>
 
         <!-- Project Grid (Bento Style) -->
@@ -468,9 +479,9 @@
             <!-- Project 1 — Large -->
             <a href="#" class="bento-card tilt-card lg:col-span-4 reveal group relative aspect-[16/10] bg-gradient-to-br from-ink-700 to-ink-800">
                 <div class="absolute inset-0 p-8 md:p-10 flex flex-col justify-end">
-                    <div class="font-mono text-xs text-accent mb-3">— 01 / WEB APP</div>
-                    <h3 class="text-3xl md:text-4xl font-black mb-3 group-hover:text-accent transition">Project Alpha</h3>
-                    <p class="text-gray-400 mb-4 max-w-md">
+                    <div class="font-mono text-xs text-accent mb-3" data-i18n="work_p1_cat">— 01 / WEB APP</div>
+                    <h3 class="text-3xl md:text-4xl font-black mb-3 group-hover:text-accent transition" data-i18n="work_p1_title">Project Alpha</h3>
+                    <p class="text-gray-400 mb-4 max-w-md" data-i18n="work_p1_desc">
                         A modern productivity dashboard with real-time collaboration,
                         built with React, TypeScript and WebSocket.
                     </p>
@@ -490,22 +501,22 @@
             <!-- Project 2 -->
             <a href="#" class="bento-card tilt-card lg:col-span-2 reveal group relative aspect-[4/5] bg-gradient-to-br from-ink-700 to-ink-800" style="transition-delay: 0.1s;">
                 <div class="absolute inset-0 p-6 flex flex-col justify-between">
-                    <div class="font-mono text-xs text-accent">— 02 / CLI TOOL</div>
+                    <div class="font-mono text-xs text-accent" data-i18n="work_p2_cat">— 02 / CLI TOOL</div>
                     <div>
-                        <h3 class="text-2xl md:text-3xl font-black mb-2 group-hover:text-accent transition">DevKit</h3>
-                        <p class="text-gray-500 text-sm">Developer productivity toolkit for the terminal</p>
+                        <h3 class="text-2xl md:text-3xl font-black mb-2 group-hover:text-accent transition" data-i18n="work_p2_title">DevKit</h3>
+                        <p class="text-gray-500 text-sm" data-i18n="work_p2_desc">Developer productivity toolkit for the terminal</p>
                     </div>
                 </div>
-                <div class="absolute bottom-6 right-6 font-mono text-xs text-gray-600 group-hover:text-accent transition">OPEN ↗</div>
+                <div class="absolute bottom-6 right-6 font-mono text-xs text-gray-600 group-hover:text-accent transition" data-i18n="work_p4_open">OPEN ↗</div>
             </a>
 
             <!-- Project 3 -->
             <a href="#" class="bento-card tilt-card lg:col-span-2 reveal group relative aspect-[4/3] bg-gradient-to-br from-ink-700 to-ink-800" style="transition-delay: 0.15s;">
                 <div class="absolute inset-0 p-6 flex flex-col justify-between">
-                    <div class="font-mono text-xs text-accent">— 03 / LIBRARY</div>
+                    <div class="font-mono text-xs text-accent" data-i18n="work_p3_cat">— 03 / LIBRARY</div>
                     <div>
-                        <h3 class="text-xl md:text-2xl font-black mb-2 group-hover:text-accent transition">MotionFX</h3>
-                        <p class="text-gray-500 text-xs">Lightweight CSS animation library</p>
+                        <h3 class="text-xl md:text-2xl font-black mb-2 group-hover:text-accent transition" data-i18n="work_p3_title">MotionFX</h3>
+                        <p class="text-gray-500 text-xs" data-i18n="work_p3_desc">Lightweight CSS animation library</p>
                     </div>
                 </div>
             </a>
@@ -514,9 +525,9 @@
             <a href="#" class="bento-card tilt-card lg:col-span-4 reveal group relative aspect-[16/9] bg-gradient-to-br from-ink-700 to-ink-800" style="transition-delay: 0.2s;">
                 <div class="absolute inset-0 p-8 md:p-10 flex items-center gap-8">
                     <div class="flex-1">
-                        <div class="font-mono text-xs text-accent mb-3">— 04 / DESIGN SYSTEM</div>
-                        <h3 class="text-2xl md:text-3xl font-black mb-3 group-hover:text-accent transition">Atlas UI Kit</h3>
-                        <p class="text-gray-400 mb-4 text-sm md:text-base">
+                        <div class="font-mono text-xs text-accent mb-3" data-i18n="work_p4_cat">— 04 / DESIGN SYSTEM</div>
+                        <h3 class="text-2xl md:text-3xl font-black mb-3 group-hover:text-accent transition" data-i18n="work_p4_title">Atlas UI Kit</h3>
+                        <p class="text-gray-400 mb-4 text-sm md:text-base" data-i18n="work_p4_desc">
                             A comprehensive component library + design tokens, shipped
                             across multiple product teams.
                         </p>
@@ -533,7 +544,7 @@
         <!-- View All Link -->
         <div class="text-center mt-16 reveal">
             <a href="#" class="inline-flex items-center gap-3 font-mono text-sm text-gray-400 hover:text-accent transition group">
-                View all projects on GitHub
+                <span data-i18n="work_viewall">View all projects on GitHub</span>
                 <span class="w-10 h-[1px] bg-gray-600 group-hover:bg-accent group-hover:w-16 transition-all"></span>
                 <span class="group-hover:translate-x-1 transition-transform">→</span>
             </a>
@@ -547,11 +558,11 @@
         <div class="grid lg:grid-cols-12 gap-12 lg:gap-20">
             <!-- Left -->
             <div class="lg:col-span-4 reveal">
-                <div class="section-label mb-4">// 04 — Tech Stack</div>
-                <h2 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-6">
+                <div class="section-label mb-4" data-i18n="skills_section">// 04 — Tech Stack</div>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-6" data-i18n-html="skills_title_complete">
                     Tools of the <span class="text-accent">trade</span>.
                 </h2>
-                <p class="text-gray-400">
+                <p class="text-gray-400" data-i18n="skills_desc">
                     A curated toolkit refined over years of building and shipping.
                     Always learning, always experimenting.
                 </p>
@@ -563,7 +574,7 @@
                 <div class="reveal" style="transition-delay: 0.1s;">
                     <div class="flex items-center gap-3 mb-4">
                         <span class="w-8 h-px bg-accent"></span>
-                        <span class="font-mono text-xs uppercase tracking-wider text-gray-500">Frontend</span>
+                        <span class="font-mono text-xs uppercase tracking-wider text-gray-500" data-i18n="skills_frontend">Frontend</span>
                     </div>
                     <div class="flex flex-wrap gap-3">
                         <span class="skill-pill px-5 py-2.5 bg-ink-800/60 border border-white/10 rounded-full font-mono text-sm text-gray-300">HTML5</span>
@@ -581,7 +592,7 @@
                 <div class="reveal" style="transition-delay: 0.15s;">
                     <div class="flex items-center gap-3 mb-4">
                         <span class="w-8 h-px bg-lime"></span>
-                        <span class="font-mono text-xs uppercase tracking-wider text-gray-500">Backend</span>
+                        <span class="font-mono text-xs uppercase tracking-wider text-gray-500" data-i18n="skills_backend">Backend</span>
                     </div>
                     <div class="flex flex-wrap gap-3">
                         <span class="skill-pill px-5 py-2.5 bg-ink-800/60 border border-white/10 rounded-full font-mono text-sm text-gray-300">Node.js</span>
@@ -597,7 +608,7 @@
                 <div class="reveal" style="transition-delay: 0.2s;">
                     <div class="flex items-center gap-3 mb-4">
                         <span class="w-8 h-px bg-white/40"></span>
-                        <span class="font-mono text-xs uppercase tracking-wider text-gray-500">Tools & DevOps</span>
+                        <span class="font-mono text-xs uppercase tracking-wider text-gray-500" data-i18n="skills_devops">Tools & DevOps</span>
                     </div>
                     <div class="flex flex-wrap gap-3">
                         <span class="skill-pill px-5 py-2.5 bg-ink-800/60 border border-white/10 rounded-full font-mono text-sm text-gray-300">Git / GitHub</span>
@@ -613,7 +624,7 @@
                 <div class="reveal" style="transition-delay: 0.25s;">
                     <div class="flex items-center gap-3 mb-4">
                         <span class="w-8 h-px bg-white/40"></span>
-                        <span class="font-mono text-xs uppercase tracking-wider text-gray-500">Design & Motion</span>
+                        <span class="font-mono text-xs uppercase tracking-wider text-gray-500" data-i18n="skills_design">Design & Motion</span>
                     </div>
                     <div class="flex flex-wrap gap-3">
                         <span class="skill-pill px-5 py-2.5 bg-ink-800/60 border border-white/10 rounded-full font-mono text-sm text-gray-300">UI Design</span>
@@ -632,34 +643,34 @@
 <section id="contact" class="relative py-24 md:py-32 bg-ink-900/50">
     <div class="max-w-7xl mx-auto px-6 md:px-10">
         <div class="reveal text-center mb-16">
-            <div class="section-label mb-4">// 05 — Contact</div>
-            <h2 class="text-5xl md:text-7xl lg:text-8xl font-black leading-none tracking-tight">
+            <div class="section-label mb-4" data-i18n="contact_section">// 05 — Contact</div>
+            <h2 class="text-5xl md:text-7xl lg:text-8xl font-black leading-none tracking-tight" data-i18n-html="contact_title_complete">
                 Let's make <br>
                 <span class="gradient-text">something great</span>.
             </h2>
-            <p class="text-gray-500 font-mono text-sm mt-8">// open to freelance · collaboration · full-time</p>
+            <p class="text-gray-500 font-mono text-sm mt-8" data-i18n="contact_available">// open to freelance · collaboration · full-time</p>
         </div>
 
         <!-- Contact Cards Grid -->
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 reveal" style="transition-delay: 0.1s;">
             <a href="mailto:hello@example.com" class="bento-card p-6 group">
                 <div class="text-2xl mb-4">✉️</div>
-                <div class="font-mono text-xs text-gray-500 uppercase tracking-wider mb-1">Email</div>
+                <div class="font-mono text-xs text-gray-500 uppercase tracking-wider mb-1" data-i18n="contact_email">Email</div>
                 <div class="text-white font-medium group-hover:text-accent transition break-all">hello@example.com</div>
             </a>
             <a href="https://github.com/emiya119" target="_blank" rel="noopener" class="bento-card p-6 group">
                 <div class="text-2xl mb-4">🐙</div>
-                <div class="font-mono text-xs text-gray-500 uppercase tracking-wider mb-1">GitHub</div>
+                <div class="font-mono text-xs text-gray-500 uppercase tracking-wider mb-1" data-i18n="contact_github">GitHub</div>
                 <div class="text-white font-medium group-hover:text-accent transition">@emiya119</div>
             </a>
             <a href="#" target="_blank" class="bento-card p-6 group">
                 <div class="text-2xl mb-4">💻</div>
-                <div class="font-mono text-xs text-gray-500 uppercase tracking-wider mb-1">Twitter / X</div>
+                <div class="font-mono text-xs text-gray-500 uppercase tracking-wider mb-1" data-i18n="contact_twitter">Twitter / X</div>
                 <div class="text-white font-medium group-hover:text-accent transition">@emiya119</div>
             </a>
             <a href="#" target="_blank" class="bento-card p-6 group">
                 <div class="text-2xl mb-4">💼</div>
-                <div class="font-mono text-xs text-gray-500 uppercase tracking-wider mb-1">LinkedIn</div>
+                <div class="font-mono text-xs text-gray-500 uppercase tracking-wider mb-1" data-i18n="contact_linkedin">LinkedIn</div>
                 <div class="text-white font-medium group-hover:text-accent transition">in/emiya119</div>
             </a>
         </div>
@@ -668,7 +679,7 @@
         <div class="reveal mt-16 text-center" style="transition-delay: 0.2s;">
             <a href="mailto:hello@example.com" class="inline-flex items-center gap-4 group">
                 <span class="text-3xl md:text-4xl font-mono text-gray-400 group-hover:text-accent transition">→</span>
-                <span class="text-xl md:text-2xl font-medium text-gray-300 group-hover:text-white transition">Say hello — I reply within 24h</span>
+                <span class="text-xl md:text-2xl font-medium text-gray-300 group-hover:text-white transition" data-i18n="contact_cta">Say hello — I reply within 24h</span>
             </a>
         </div>
     </div>
@@ -682,10 +693,10 @@
                 <span class="w-6 h-6 rounded-md bg-accent flex items-center justify-center text-ink-950 font-bold text-xs">E</span>
                 <span>© 2026 emiya119</span>
             </div>
-            <div class="font-mono text-xs text-gray-600">
+            <div class="font-mono text-xs text-gray-600" data-i18n="footer_built">
                 Built with ❤️ using GitHub Pages · Pure HTML/CSS/JS
             </div>
-            <a href="#home" class="font-mono text-sm text-gray-500 hover:text-accent transition flex items-center gap-2">
+            <a href="#home" class="font-mono text-sm text-gray-500 hover:text-accent transition flex items-center gap-2" data-i18n="footer_backtotop">
                 Back to top
                 <span class="w-4 h-4 rounded-full border border-current flex items-center justify-center text-[10px]">↑</span>
             </a>
@@ -693,6 +704,7 @@
     </div>
 </footer>
 
+<script src="i18n.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
