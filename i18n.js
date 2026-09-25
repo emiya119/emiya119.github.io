@@ -11,10 +11,11 @@
  */
 
 const I18n = (function () {
-    const DEFAULT_LANG = 'zh';
-    const STORAGE_KEY = 'emiya119-lang';
+        const DEFAULT_LANG = 'zh';
+        const STORAGE_KEY = 'emiya119-lang';
+        const VALID_LANGS = ['zh', 'en'];
 
-    const translations = {
+        const translations = {
         // ---------- SITE ----------
         site_title: { zh: 'Emiya119 — 创意开发者', en: 'Emiya119 — Creative Developer' },
 
@@ -131,7 +132,7 @@ const I18n = (function () {
 
     function loadLang() {
         const saved = localStorage.getItem(STORAGE_KEY);
-        if (saved && translations[saved]) return saved;
+        if (saved && VALID_LANGS.includes(saved)) return saved;
         // 自动检测
         const nav = (navigator.language || 'zh').toLowerCase();
         if (nav.startsWith('en')) return 'en';
@@ -145,7 +146,7 @@ const I18n = (function () {
     }
 
     function setLang(lang) {
-        if (!translations[lang]) {
+        if (!VALID_LANGS.includes(lang)) {
             console.warn('[i18n] Unknown language:', lang);
             return;
         }
